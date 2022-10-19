@@ -7,7 +7,7 @@ public class Server extends Part {
     @Override
     public void test() {
         super.test();
-        System.out.println("자식 클래스입니다");
+        System.out.println("자식 클래스입니다.");
     }
 
     public Server(String name, String study) {
