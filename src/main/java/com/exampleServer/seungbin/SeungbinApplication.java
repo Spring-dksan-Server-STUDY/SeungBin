@@ -2,6 +2,7 @@ package com.exampleServer.seungbin;
 
 import com.exampleServer.seungbin.Study1.*;
 //import com.exampleServer.seungbin.Study1.UserServiceImpl;
+import com.exampleServer.seungbin.assignment1.CarServiceImpl;
 import net.bytebuddy.description.type.TypeList;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,8 +35,15 @@ public class SeungbinApplication {
 //		server.test();
 		Generic<String> generic1 = new Generic<>("최승빈");
 		Generic<Integer> generic2 = new Generic<>(24);
-		generic1.printData();
-		generic2.printData();
+//		generic1.printData();
+//		generic2.printData();
+
+
+		CarServiceImpl carService = new CarServiceImpl();
+		String carName = carService.CarName;
+		carService.information("현대", "그랜저");
+		carService.getInfo(56, "쏘나타");
+		carService.getCar();
 
 
 
