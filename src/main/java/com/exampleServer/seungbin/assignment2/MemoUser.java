@@ -18,6 +18,7 @@ public class MemoUser {
     private String title;
     private String content;
 
+
     public MemoUser(final Long id, final String title, final String content){
         this.id = id;
         this.title = title;

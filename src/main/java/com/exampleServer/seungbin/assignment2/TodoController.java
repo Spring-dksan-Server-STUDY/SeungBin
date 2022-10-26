@@ -1,11 +1,13 @@
 package com.exampleServer.seungbin.assignment2;
 
 
+import com.exampleServer.seungbin.Study2.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @RestController
 @RequestMapping(method = RequestMethod.GET, value = "/todo")
@@ -21,12 +23,10 @@ public class TodoController {
         em.persist(memoUser);
         return memoUser.getId();
     }
-
-//    @GetMapping("/{id}")
-//    @Transactional
-//    public Long getTodo() {
-//
-//    }
+    @GetMapping("")
+    public List<MemoUser> getTodo() {
+        return em.createQuery("select m from MemoUser m").getResultList();
+    }
 
 //    @PutMapping("/{id}")
 //    @Transactional
@@ -34,9 +34,12 @@ public class TodoController {
 //
 //    }
 //
-//    @DeleteMapping("/{id}")
-//    @Transactional
-//    public String deleteTodo(){
-//
-//    }
+    @DeleteMapping("/{id}")
+    @Transactional
+    public Long deleteTodo(Long id){
+        em.createQuery("delete from MemoUser where id =: id")
+                .setParameter("id", id)
+                .executeUpdate();
+        return id;
+    }
 }
