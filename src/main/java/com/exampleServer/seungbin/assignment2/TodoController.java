@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @RestController
-@RequestMapping(method = RequestMethod.GET, value = "/todo")
+@RequestMapping("/todo")
 @RequiredArgsConstructor
 public class TodoController {
 
@@ -36,7 +36,7 @@ public class TodoController {
 //
     @DeleteMapping("/{id}")
     @Transactional
-    public Long deleteTodo(Long id){
+    public Long deleteTodo(@PathVariable Long id){
         em.createQuery("delete from MemoUser where id =: id")
                 .setParameter("id", id)
                 .executeUpdate();
